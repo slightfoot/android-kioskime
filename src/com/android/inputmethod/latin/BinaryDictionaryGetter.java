@@ -88,13 +88,15 @@ final class BinaryDictionaryGetter {
      * Returns a file address from a resource, or null if it cannot be opened.
      */
     public static AssetFileAddress loadFallbackResource(final Context context,
-            final int fallbackResId) {
-        final AssetFileDescriptor afd = context.getResources().openRawResourceFd(fallbackResId);
-        if (afd == null) {
-            Log.e(TAG, "Found the resource but cannot read it. Is it compressed? resId="
-                    + fallbackResId);
-            return null;
-        }
+            final String dictLanguage) {
+        AssetFileDescriptor afd;
+		try{
+			afd = context.getResources().getAssets().openFd(dictLanguage);
+		}
+		catch(IOException e1){
+			Log.e(TAG, "Found the resource but cannot read it. Is it compressed? assetName=" + dictLanguage);
+			return null;
+		}
         try {
             return AssetFileAddress.makeFromFileNameAndOffset(
                     context.getApplicationInfo().sourceDir, afd.getStartOffset(), afd.getLength());
@@ -323,9 +325,9 @@ final class BinaryDictionaryGetter {
         }
 
         if (!foundMainDict && dictPackSettings.isWordListActive(mainDictId)) {
-            final int fallbackResId =
+            final String fallbackLanguage =
                     DictionaryInfoUtils.getMainDictionaryResourceId(context.getResources(), locale);
-            final AssetFileAddress fallbackAsset = loadFallbackResource(context, fallbackResId);
+            final AssetFileAddress fallbackAsset = loadFallbackResource(context, fallbackLanguage);
             if (null != fallbackAsset) {
                 fileList.add(fallbackAsset);
             }

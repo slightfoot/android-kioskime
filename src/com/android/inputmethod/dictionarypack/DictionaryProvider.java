@@ -34,6 +34,7 @@ import com.android.inputmethod.latin.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -311,9 +312,12 @@ public final class DictionaryProvider extends ContentProvider {
                 // This is how we "delete" the files. It allows Android Keyboard to fake deleting
                 // a default dictionary - which is actually in its assets and can't be really
                 // deleted.
-                final AssetFileDescriptor afd = getContext().getResources().openRawResourceFd(
-                        R.raw.empty);
-                return afd;
+                try{
+					return getContext().getResources().getAssets().openFd("empty.dict");
+				}
+				catch(IOException e){
+					return null;
+				}
             } else {
                 final String localFilename =
                         wordList.getAsString(MetadataDbHelper.LOCAL_FILENAME_COLUMN);

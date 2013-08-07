@@ -22,6 +22,7 @@ import android.content.res.Resources;
 import android.util.Log;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Locale;
@@ -93,14 +94,16 @@ public final class DictionaryFactory {
             final Locale locale) {
         AssetFileDescriptor afd = null;
         try {
-            final int resId = DictionaryInfoUtils.getMainDictionaryResourceIdIfAvailableForLocale(
+            final String dictLanguage = DictionaryInfoUtils.getMainDictionaryResourceIdIfAvailableForLocale(
                     context.getResources(), locale);
-            if (0 == resId) return null;
-            afd = context.getResources().openRawResourceFd(resId);
-            if (afd == null) {
-                Log.e(TAG, "Found the resource but it is compressed. resId=" + resId);
-                return null;
-            }
+            if (dictLanguage == null) return null;
+            try{
+				afd = context.getResources().getAssets().openFd(dictLanguage);
+			}
+			catch(IOException e){
+				 Log.e(TAG, "Found the resource but it is compressed. assetName=" + dictLanguage);
+	                return null;
+			}
             final String sourceDir = context.getApplicationInfo().sourceDir;
             final File packagePath = new File(sourceDir);
             // TODO: Come up with a way to handle a directory.
@@ -151,7 +154,7 @@ public final class DictionaryFactory {
      */
     public static boolean isDictionaryAvailable(Context context, Locale locale) {
         final Resources res = context.getResources();
-        return 0 != DictionaryInfoUtils.getMainDictionaryResourceIdIfAvailableForLocale(
+        return null != DictionaryInfoUtils.getMainDictionaryResourceIdIfAvailableForLocale(
                 res, locale);
     }
 }

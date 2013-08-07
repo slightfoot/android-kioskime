@@ -38,13 +38,15 @@
             <Key
                 latin:keyStyle="shortcutKeyStyle" />
         </case>
+        <!--
+        KIOSK: removed settings key
         <case
             latin:shortcutKeyEnabled="false"
-            latin:clobberSettingsKey="false"
-        >
+            latin:clobberSettingsKey="false">
             <Key
                 latin:keyStyle="settingsKeyStyle" />
         </case>
+        -->
         <!-- shortcutKeyEnabled="false" clobberSettingsKey="true" -->
         <default>
             <Spacer />

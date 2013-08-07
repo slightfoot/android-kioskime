@@ -29,6 +29,7 @@ import com.android.inputmethod.latin.makedict.UnsupportedFormatException;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -228,27 +229,23 @@ public class DictionaryInfoUtils {
      * @param locale dictionary locale
      * @return main dictionary resource id
      */
-    public static int getMainDictionaryResourceIdIfAvailableForLocale(final Resources res,
+    public static String getMainDictionaryResourceIdIfAvailableForLocale(final Resources res,
             final Locale locale) {
-        int resId;
+        String dictLanguage;
         // Try to find main_language_country dictionary.
         if (!locale.getCountry().isEmpty()) {
-            final String dictLanguageCountry =
-                    MAIN_DICT_PREFIX + locale.toString().toLowerCase(Locale.ROOT);
-            if ((resId = res.getIdentifier(
-                    dictLanguageCountry, "raw", RESOURCE_PACKAGE_NAME)) != 0) {
-                return resId;
+            dictLanguage = MAIN_DICT_PREFIX + locale.toString().toLowerCase(Locale.ROOT);
+            if(checkForDictionaryAsset(res, dictLanguage)){
+            	return dictLanguage;
             }
         }
-
         // Try to find main_language dictionary.
-        final String dictLanguage = MAIN_DICT_PREFIX + locale.getLanguage();
-        if ((resId = res.getIdentifier(dictLanguage, "raw", RESOURCE_PACKAGE_NAME)) != 0) {
-            return resId;
+        dictLanguage = MAIN_DICT_PREFIX + locale.getLanguage();
+        if(checkForDictionaryAsset(res, dictLanguage)){
+        	return dictLanguage;
         }
-
-        // Not found, return 0
-        return 0;
+        // Not found, return null
+        return null;
     }
 
     /**
@@ -256,10 +253,29 @@ public class DictionaryInfoUtils {
      * @param locale dictionary locale
      * @return main dictionary resource id
      */
-    public static int getMainDictionaryResourceId(final Resources res, final Locale locale) {
-        int resourceId = getMainDictionaryResourceIdIfAvailableForLocale(res, locale);
-        if (0 != resourceId) return resourceId;
-        return res.getIdentifier(DEFAULT_MAIN_DICT, "raw", RESOURCE_PACKAGE_NAME);
+    public static String getMainDictionaryResourceId(final Resources res, final Locale locale) {
+        String dictLanguage = getMainDictionaryResourceIdIfAvailableForLocale(res, locale);
+        if (dictLanguage != null) return dictLanguage;
+        return DEFAULT_MAIN_DICT;
+    }
+    
+    private static boolean checkForDictionaryAsset(final Resources res, final String dictLanguage)
+    {
+    	InputStream is = null;
+    	try{
+    		try{
+    			is = res.getAssets().open(dictLanguage);
+    			return true;
+    		}
+    		finally{
+	    		if(is != null){
+	    			is.close();
+	    		}
+	    	}
+    	}catch(IOException e){
+    		// Ignored
+    	}
+    	return false;
     }
 
     /**
@@ -343,12 +359,11 @@ public class DictionaryInfoUtils {
         final AssetManager assets = resources.getAssets();
         for (final String localeString : assets.getLocales()) {
             final Locale locale = LocaleUtils.constructLocaleFromString(localeString);
-            final int resourceId =
-                    DictionaryInfoUtils.getMainDictionaryResourceIdIfAvailableForLocale(
-                            context.getResources(), locale);
-            if (0 == resourceId) continue;
+            final String dictLanguage = DictionaryInfoUtils
+            	.getMainDictionaryResourceIdIfAvailableForLocale(context.getResources(), locale);
+            if (dictLanguage == null) continue;
             final AssetFileAddress fileAddress =
-                    BinaryDictionaryGetter.loadFallbackResource(context, resourceId);
+                    BinaryDictionaryGetter.loadFallbackResource(context, dictLanguage);
             final DictionaryInfo dictionaryInfo = createDictionaryInfoFromFileAddress(fileAddress);
             // Protect against cases of a less-specific dictionary being found, like an
             // en dictionary being used for an en_US locale. In this case, the en dictionary
