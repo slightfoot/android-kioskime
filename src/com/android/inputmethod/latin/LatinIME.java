@@ -1309,10 +1309,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return Character.isLetter(code);
     }
 
-    private void onSettingsKeyPressed() {
-        if (isShowingOptionDialog()) return;
-        showSubtypeSelectorAndSettings();
-    }
+//    KIOSK hide settings key
+//    private void onSettingsKeyPressed() {
+//        if (isShowingOptionDialog()) return;
+//        showSubtypeSelectorAndSettings();
+//    }
 
     // Virtual codes representing custom requests.  These are used in onCustomRequest() below.
     public static final int CODE_SHOW_INPUT_METHOD_PICKER = 1;
@@ -1431,9 +1432,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             // Note: calling back to the keyboard on symbol key is handled in onPressKey()
             // and onReleaseKey().
             break;
-        case Constants.CODE_SETTINGS:
-            onSettingsKeyPressed();
-            break;
+//        KIOSK hide settings key
+//        case Constants.CODE_SETTINGS:
+//            onSettingsKeyPressed();
+//            break;
         case Constants.CODE_SHORTCUT:
             mSubtypeSwitcher.switchToShortcutIME(this);
             break;

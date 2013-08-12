@@ -105,12 +105,15 @@
         latin:keyIcon="!icon/language_switch_key"
         latin:keyActionFlags="noKeyPreview|altCodeWhileTyping|enableLongPress"
         latin:altCode="!code/key_space" />
+    <!--
+    KIOSK: removed settings key  
     <key-style
         latin:styleName="settingsKeyStyle"
         latin:code="!code/key_settings"
         latin:keyIcon="!icon/settings_key"
         latin:keyActionFlags="noKeyPreview"
         latin:backgroundType="functional" />
+     -->
     <switch>
         <case
             latin:keyboardLayoutSetElement="alphabetManualShifted|alphabetShiftLockShifted"

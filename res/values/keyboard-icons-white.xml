@@ -19,7 +19,7 @@
         <!-- Keyboard icons -->
         <item name="iconShiftKey">@drawable/sym_keyboard_shift</item>
         <item name="iconDeleteKey">@drawable/sym_keyboard_delete</item>
-        <item name="iconSettingsKey">@drawable/sym_keyboard_settings</item>
+        <!--<item name="iconSettingsKey">@drawable/sym_keyboard_settings</item>-->
         <item name="iconSpaceKey">@drawable/sym_keyboard_space</item>
         <item name="iconEnterKey">@drawable/sym_keyboard_return</item>ZZ
         <item name="iconSearchKey">@drawable/sym_keyboard_search</item>

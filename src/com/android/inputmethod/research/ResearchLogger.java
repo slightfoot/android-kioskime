@@ -1369,21 +1369,36 @@ public class ResearchLogger implements SharedPreferences.OnSharedPreferenceChang
      * IME), but may happen at other times if the user explicitly requests a keyboard change.
      */
     private static final LogStatement LOGSTATEMENT_MAINKEYBOARDVIEW_SETKEYBOARD =
+//            KIOSK hide settings key
+//            new LogStatement("MainKeyboardViewSetKeyboard", false, false, "elementId", "locale",
+//                    "orientation", "width", "modeName", "action", "navigateNext",
+//                    "navigatePrevious", "clobberSettingsKey", "passwordInput", "shortcutKeyEnabled",
+//                    "hasShortcutKey", "languageSwitchKeyEnabled", "isMultiLine", "tw", "th",
+//                    "keys");
             new LogStatement("MainKeyboardViewSetKeyboard", false, false, "elementId", "locale",
-                    "orientation", "width", "modeName", "action", "navigateNext",
-                    "navigatePrevious", "clobberSettingsKey", "passwordInput", "shortcutKeyEnabled",
-                    "hasShortcutKey", "languageSwitchKeyEnabled", "isMultiLine", "tw", "th",
-                    "keys");
+                             "orientation", "width", "modeName", "action", "navigateNext",
+                             "navigatePrevious", "passwordInput", "shortcutKeyEnabled",
+                             "hasShortcutKey", "languageSwitchKeyEnabled", "isMultiLine", "tw", "th",
+                             "keys");
     public static void mainKeyboardView_setKeyboard(final Keyboard keyboard) {
         final KeyboardId kid = keyboard.mId;
         final boolean isPasswordView = kid.passwordInput();
         final ResearchLogger researchLogger = getInstance();
         researchLogger.setIsPasswordView(isPasswordView);
+        // KIOSK hide settings key
+//        researchLogger.enqueueEvent(LOGSTATEMENT_MAINKEYBOARDVIEW_SETKEYBOARD,
+//                KeyboardId.elementIdToName(kid.mElementId),
+//                kid.mLocale + ":" + kid.mSubtype.getExtraValueOf(KEYBOARD_LAYOUT_SET),
+//                kid.mOrientation, kid.mWidth, KeyboardId.modeName(kid.mMode), kid.imeAction(),
+//                kid.navigateNext(), kid.navigatePrevious(), kid.mClobberSettingsKey,
+//                isPasswordView, kid.mShortcutKeyEnabled, kid.mHasShortcutKey,
+//                kid.mLanguageSwitchKeyEnabled, kid.isMultiLine(), keyboard.mOccupiedWidth,
+//                keyboard.mOccupiedHeight, keyboard.mKeys);
         researchLogger.enqueueEvent(LOGSTATEMENT_MAINKEYBOARDVIEW_SETKEYBOARD,
                 KeyboardId.elementIdToName(kid.mElementId),
                 kid.mLocale + ":" + kid.mSubtype.getExtraValueOf(KEYBOARD_LAYOUT_SET),
                 kid.mOrientation, kid.mWidth, KeyboardId.modeName(kid.mMode), kid.imeAction(),
-                kid.navigateNext(), kid.navigatePrevious(), kid.mClobberSettingsKey,
+                kid.navigateNext(), kid.navigatePrevious(),
                 isPasswordView, kid.mShortcutKeyEnabled, kid.mHasShortcutKey,
                 kid.mLanguageSwitchKeyEnabled, kid.isMultiLine(), keyboard.mOccupiedWidth,
                 keyboard.mOccupiedHeight, keyboard.mKeys);

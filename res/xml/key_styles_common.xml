@@ -108,6 +108,8 @@
         latin:keyActionFlags="noKeyPreview|altCodeWhileTyping"
         latin:altCode="!code/key_space"
         latin:parentStyle="f1MoreKeysStyle" />
+    <!--
+    KIOSK: removed settings key  
     <key-style
         latin:styleName="settingsKeyStyle"
         latin:code="!code/key_settings"
@@ -115,6 +117,7 @@
         latin:keyActionFlags="noKeyPreview|altCodeWhileTyping"
         latin:altCode="!code/key_space"
         latin:backgroundType="functional" />
+     -->
     <key-style
         latin:styleName="languageSwitchKeyStyle"
         latin:code="!code/key_language_switch"

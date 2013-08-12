@@ -65,7 +65,8 @@ public final class KeyboardId {
     public final int mMode;
     public final int mElementId;
     private final EditorInfo mEditorInfo;
-    public final boolean mClobberSettingsKey;
+// KIOSK hide settings key
+//    public final boolean mClobberSettingsKey;
     public final boolean mShortcutKeyEnabled;
     public final boolean mShortcutKeyOnSymbols;
     public final boolean mLanguageSwitchKeyEnabled;
@@ -83,7 +84,8 @@ public final class KeyboardId {
         mMode = params.mMode;
         mElementId = elementId;
         mEditorInfo = params.mEditorInfo;
-        mClobberSettingsKey = params.mNoSettingsKey;
+// KIOSK hide settings key
+//        mClobberSettingsKey = params.mNoSettingsKey;
         mShortcutKeyEnabled = params.mVoiceKeyEnabled;
         mShortcutKeyOnSymbols = mShortcutKeyEnabled && !params.mVoiceKeyOnMain;
         mLanguageSwitchKeyEnabled = params.mLanguageSwitchKeyEnabled;
@@ -107,7 +109,8 @@ public final class KeyboardId {
                 id.mWidth,
                 id.mHeight,
                 id.passwordInput(),
-                id.mClobberSettingsKey,
+// KIOSK hide settings key
+//                id.mClobberSettingsKey,
                 id.mShortcutKeyEnabled,
                 id.mShortcutKeyOnSymbols,
                 id.mLanguageSwitchKeyEnabled,
@@ -129,7 +132,8 @@ public final class KeyboardId {
                 && other.mWidth == mWidth
                 && other.mHeight == mHeight
                 && other.passwordInput() == passwordInput()
-                && other.mClobberSettingsKey == mClobberSettingsKey
+// KIOSK hide settings key
+//                && other.mClobberSettingsKey == mClobberSettingsKey
                 && other.mShortcutKeyEnabled == mShortcutKeyEnabled
                 && other.mShortcutKeyOnSymbols == mShortcutKeyOnSymbols
                 && other.mLanguageSwitchKeyEnabled == mLanguageSwitchKeyEnabled
@@ -196,7 +200,8 @@ public final class KeyboardId {
                 imeAction(),
                 (navigateNext() ? "navigateNext" : ""),
                 (navigatePrevious() ? "navigatePrevious" : ""),
-                (mClobberSettingsKey ? " clobberSettingsKey" : ""),
+// KIOSK hide settings key
+//                (mClobberSettingsKey ? " clobberSettingsKey" : ""),
                 (passwordInput() ? " passwordInput" : ""),
                 (mShortcutKeyEnabled ? " shortcutKeyEnabled" : ""),
                 (mShortcutKeyOnSymbols ? " shortcutKeyOnSymbols" : ""),

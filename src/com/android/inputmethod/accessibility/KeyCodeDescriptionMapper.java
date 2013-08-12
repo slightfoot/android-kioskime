@@ -65,7 +65,8 @@ public final class KeyCodeDescriptionMapper {
         mKeyCodeMap.put(Constants.CODE_SPACE, R.string.spoken_description_space);
         mKeyCodeMap.put(Constants.CODE_DELETE, R.string.spoken_description_delete);
         mKeyCodeMap.put(Constants.CODE_ENTER, R.string.spoken_description_return);
-        mKeyCodeMap.put(Constants.CODE_SETTINGS, R.string.spoken_description_settings);
+        // KIOSK: removed settings key 
+        //mKeyCodeMap.put(Constants.CODE_SETTINGS, R.string.spoken_description_settings);
         mKeyCodeMap.put(Constants.CODE_SHIFT, R.string.spoken_description_shift);
         mKeyCodeMap.put(Constants.CODE_SHORTCUT, R.string.spoken_description_mic);
         mKeyCodeMap.put(Constants.CODE_SWITCH_ALPHA_SYMBOL, R.string.spoken_description_to_symbol);

@@ -106,7 +106,8 @@ public final class KeyboardLayoutSet {
         boolean mDisableTouchPositionCorrectionDataForTest;
         boolean mVoiceKeyEnabled;
         boolean mVoiceKeyOnMain;
-        boolean mNoSettingsKey;
+// KIOSK hide settings key
+//        boolean mNoSettingsKey;
         boolean mLanguageSwitchKeyEnabled;
         InputMethodSubtype mSubtype;
         int mOrientation;
@@ -215,8 +216,9 @@ public final class KeyboardLayoutSet {
 
             params.mMode = getKeyboardMode(editorInfo);
             params.mEditorInfo = (editorInfo != null) ? editorInfo : EMPTY_EDITOR_INFO;
-            params.mNoSettingsKey = InputAttributes.inPrivateImeOptions(
-                    mPackageName, NO_SETTINGS_KEY, mEditorInfo);
+// KIOSK hide settings key
+//            params.mNoSettingsKey = InputAttributes.inPrivateImeOptions(
+//                    mPackageName, NO_SETTINGS_KEY, mEditorInfo);
         }
 
         public Builder setScreenGeometry(final int widthPixels, final int heightPixels) {

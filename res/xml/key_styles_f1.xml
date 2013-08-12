@@ -24,6 +24,8 @@
     <!-- Base key style for the key which may have settings or tab key as popup key. -->
     <!-- Kept as a separate file for cleaner overriding by an overlay.  -->
     <switch>
+        <!--
+        KIOSK hide settings key
         <case
             latin:clobberSettingsKey="true"
         >
@@ -31,7 +33,8 @@
                 latin:styleName="f1MoreKeysStyle"
                 latin:backgroundType="functional" />
         </case>
-        <!-- clobberSettingsKey="false" -->
+        clobberSettingsKey="false"
+    -->
         <default>
             <key-style
                 latin:styleName="f1MoreKeysStyle"

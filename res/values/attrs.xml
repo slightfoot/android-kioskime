@@ -203,7 +203,7 @@
              These should be aligned with KeyboardIconsSet.NAMES_AND_ATTR_IDS[] -->
         <attr name="iconShiftKey" format="reference" />
         <attr name="iconDeleteKey" format="reference" />
-        <attr name="iconSettingsKey" format="reference" />
+        <!--<attr name="iconSettingsKey" format="reference" />-->
         <attr name="iconSpaceKey" format="reference" />
         <attr name="iconEnterKey" format="reference" />
         <attr name="iconSearchKey" format="reference" />
@@ -390,7 +390,7 @@
         <attr name="navigateNext" format="boolean" />
         <attr name="navigatePrevious" format="boolean" />
         <attr name="passwordInput" format="boolean" />
-        <attr name="clobberSettingsKey" format="boolean" />
+        <!--<attr name="clobberSettingsKey" format="boolean" />-->
         <attr name="shortcutKeyEnabled" format="boolean" />
         <attr name="shortcutKeyOnSymbols" format="boolean" />
         <attr name="hasShortcutKey" format="boolean" />

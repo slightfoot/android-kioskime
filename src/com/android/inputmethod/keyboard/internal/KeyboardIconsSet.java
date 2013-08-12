@@ -42,7 +42,8 @@ public final class KeyboardIconsSet {
         "undefined",                    ATTR_UNDEFINED,
         "shift_key",                    R.styleable.Keyboard_iconShiftKey,
         "delete_key",                   R.styleable.Keyboard_iconDeleteKey,
-        "settings_key",                 R.styleable.Keyboard_iconSettingsKey,
+//      KIOSK hide settings key
+//        "settings_key",                 R.styleable.Keyboard_iconSettingsKey,
         "space_key",                    R.styleable.Keyboard_iconSpaceKey,
         "enter_key",                    R.styleable.Keyboard_iconEnterKey,
         "search_key",                   R.styleable.Keyboard_iconSearchKey,

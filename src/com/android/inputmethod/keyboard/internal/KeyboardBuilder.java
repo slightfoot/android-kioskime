@@ -594,8 +594,9 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     R.styleable.Keyboard_Case_navigatePrevious, id.navigatePrevious());
             final boolean passwordInputMatched = matchBoolean(a,
                     R.styleable.Keyboard_Case_passwordInput, id.passwordInput());
-            final boolean clobberSettingsKeyMatched = matchBoolean(a,
-                    R.styleable.Keyboard_Case_clobberSettingsKey, id.mClobberSettingsKey);
+// KIOSK hide settings key
+//            final boolean clobberSettingsKeyMatched = matchBoolean(a,
+//                    R.styleable.Keyboard_Case_clobberSettingsKey, id.mClobberSettingsKey);
             final boolean shortcutKeyEnabledMatched = matchBoolean(a,
                     R.styleable.Keyboard_Case_shortcutKeyEnabled, id.mShortcutKeyEnabled);
             final boolean shortcutKeyOnSymbolsMatched = matchBoolean(a,
@@ -615,9 +616,16 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                     R.styleable.Keyboard_Case_languageCode, id.mLocale.getLanguage());
             final boolean countryCodeMatched = matchString(a,
                     R.styleable.Keyboard_Case_countryCode, id.mLocale.getCountry());
+// KIOSK hide settings key
+//            final boolean selected = keyboardLayoutSetElementMatched && modeMatched
+//                    && navigateNextMatched && navigatePreviousMatched && passwordInputMatched
+//                    && clobberSettingsKeyMatched && shortcutKeyEnabledMatched
+//                    && shortcutKeyOnSymbolsMatched && hasShortcutKeyMatched
+//                    && languageSwitchKeyEnabledMatched && isMultiLineMatched && imeActionMatched
+//                    && localeCodeMatched && languageCodeMatched && countryCodeMatched;
             final boolean selected = keyboardLayoutSetElementMatched && modeMatched
                     && navigateNextMatched && navigatePreviousMatched && passwordInputMatched
-                    && clobberSettingsKeyMatched && shortcutKeyEnabledMatched
+                    && shortcutKeyEnabledMatched
                     && shortcutKeyOnSymbolsMatched && hasShortcutKeyMatched
                     && languageSwitchKeyEnabledMatched && isMultiLineMatched && imeActionMatched
                     && localeCodeMatched && languageCodeMatched && countryCodeMatched;
@@ -634,8 +642,11 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
                                 "navigateNext"),
                         booleanAttr(a, R.styleable.Keyboard_Case_navigatePrevious,
                                 "navigatePrevious"),
-                        booleanAttr(a, R.styleable.Keyboard_Case_clobberSettingsKey,
-                                "clobberSettingsKey"),
+
+//                        KIOSK hide settings key
+//                        booleanAttr(a, R.styleable.Keyboard_Case_clobberSettingsKey,
+//                                "clobberSettingsKey"),
+
                         booleanAttr(a, R.styleable.Keyboard_Case_passwordInput,
                                 "passwordInput"),
                         booleanAttr(a, R.styleable.Keyboard_Case_shortcutKeyEnabled,
