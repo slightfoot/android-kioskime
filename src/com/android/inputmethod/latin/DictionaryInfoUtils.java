@@ -41,7 +41,7 @@ public class DictionaryInfoUtils {
     // This class must be located in the same package as LatinIME.java.
     private static final String RESOURCE_PACKAGE_NAME =
             DictionaryInfoUtils.class.getPackage().getName();
-    private static final String DEFAULT_MAIN_DICT = "main";
+    private static final String DEFAULT_MAIN_DICT = "main.dict";
     private static final String MAIN_DICT_PREFIX = "main_";
     // 6 digits - unicode is limited to 21 bits
     private static final int MAX_HEX_DIGITS_FOR_CODEPOINT = 6;
