@@ -24,31 +24,31 @@
 #include "defines.h"
 
 /*
- * Returns the JNI version on success, -1 on failure.
+ * Returns the JNI version on success, JNI_ERR on failure.
  */
 jint JNI_OnLoad(JavaVM *vm, void *reserved) {
     JNIEnv *env = 0;
 
     if (vm->GetEnv(reinterpret_cast<void **>(&env), JNI_VERSION_1_6) != JNI_OK) {
         AKLOGE("ERROR: GetEnv failed");
-        return -1;
+        return JNI_ERR;
     }
     ASSERT(env);
     if (!env) {
         AKLOGE("ERROR: JNIEnv is invalid");
-        return -1;
+        return JNI_ERR;
     }
     if (!latinime::register_BinaryDictionary(env)) {
         AKLOGE("ERROR: BinaryDictionary native registration failed");
-        return -1;
+        return JNI_ERR;
     }
     if (!latinime::register_DicTraverseSession(env)) {
         AKLOGE("ERROR: DicTraverseSession native registration failed");
-        return -1;
+        return JNI_ERR;
     }
     if (!latinime::register_ProximityInfo(env)) {
         AKLOGE("ERROR: ProximityInfo native registration failed");
-        return -1;
+        return JNI_ERR;
     }
     /* success -- return valid version number */
     return JNI_VERSION_1_6;
