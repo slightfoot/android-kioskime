@@ -16,7 +16,9 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         coreApp="true"
-        package="com.android.inputmethod.latin">
+        package="com.android.inputmethod.latin"
+        android:versionCode="1"
+        android:versionName="1">
 
     <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="17" />
 
