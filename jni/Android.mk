@@ -27,7 +27,7 @@ LATIN_IME_SRC_DIR := src
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/$(LATIN_IME_SRC_DIR)
 
-LOCAL_CFLAGS += -Wall -Wextra -Wformat=2 -Wcast-qual -Wcast-align \
+LOCAL_CFLAGS += -w -Wextra -Wformat=2 -Wcast-qual -Wcast-align \
     -Wwrite-strings -Wfloat-equal -Wpointer-arith -Winit-self -Wredundant-decls -Wno-system-headers
 
 ifeq ($(TARGET_ARCH), arm)
